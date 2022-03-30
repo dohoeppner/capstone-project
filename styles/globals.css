@@ -2,7 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Roboto, sans-serif;
+  font-family: Roboto, serif;
   line-height: 1.6;
 }
 
@@ -10,19 +10,27 @@ body {
   box-sizing: border-box;
 }
 
-*a {
+* a {
   text-decoration: none;
 }
 
-/*img {
+img {
   max-width: 100%;
   display: block;
-}*/
+}
 
-.navBar-active {
+ul {
+  padding: 0;
+}
+
+li {
+  padding: 0;
+}
+
+/*.navBar-active {
   background: red;
 }
 
 .navBar-active span {
   color: blue;
-}
+}*/

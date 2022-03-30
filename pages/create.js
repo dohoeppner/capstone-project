@@ -7,7 +7,7 @@ export default function Create() {
       <main>
         <h1>Here you can create new cards!</h1>;
       </main>
-      <Navbar active="create" />
+      <Navbar />
     </Layout>
   );
 }

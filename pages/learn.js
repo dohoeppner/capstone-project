@@ -1,5 +1,6 @@
 import Layout from "../components/layout";
 import Navbar from "../components/Navbar";
+import Card from "../components/Card";
 
 export default function Learn() {
   return (
@@ -7,7 +8,8 @@ export default function Learn() {
       <main>
         <h1>Here you can repeat your words!</h1>
       </main>
-      <Navbar active="learn" />
+      <Card />
+      <Navbar />
     </Layout>
   );
 }

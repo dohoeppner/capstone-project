@@ -2,7 +2,6 @@ import Link from "next/link";
 import Head from "next/head";
 import Layout from "../components/layout";
 import styled from "styled-components";
-import Button from "../components/Button";
 import Navbar from "../components/Navbar";
 
 export default function Home() {
@@ -11,50 +10,67 @@ export default function Home() {
       <Head>
         <title>Vocabulary App</title>
       </Head>
-      <main>
+      <StyledMain>
         <WelcomeText>Welcome, Dora!</WelcomeText>
         <StyledHeadline>My languages</StyledHeadline>
-        <LanguageSection>
-          <ul>
-            <Language>
-              <Link href="#">
-                <a>Language 1</a>
-              </Link>
-            </Language>
-            <Language>
-              <Link href="#">
-                <a>Language 2</a>
-              </Link>
-            </Language>
-            <Language>
-              <Link href="#">
-                <a>Language 3</a>
-              </Link>
-            </Language>
-            <Language>
-              <Link href="#">
-                <a>+</a>
-              </Link>
-            </Language>
-          </ul>
-        </LanguageSection>
-        <div>
+
+        <LanguageContainer>
+          <Language>
+            <Link href="#" passHref>
+              <LanguageButton>Language 1</LanguageButton>
+            </Link>
+          </Language>
+          <Language>
+            <Link href="#" passHref>
+              <LanguageButton>Language 2</LanguageButton>
+            </Link>
+          </Language>
+          <Language>
+            <Link href="#" passHref>
+              <LanguageButton>Language 3</LanguageButton>
+            </Link>
+          </Language>
+          <Language>
+            <Link href="#" passHref>
+              <LanguageButton>+</LanguageButton>
+            </Link>
+          </Language>
+        </LanguageContainer>
+
+        <ButtonFrame>
           <Link href="/learn" passHref>
             <PracticeButton>Practice now</PracticeButton>
           </Link>
-        </div>
-      </main>
-      <Navbar active="home" />
+        </ButtonFrame>
+      </StyledMain>
+      <Navbar />
     </Layout>
   );
 }
 
+const StyledMain = styled.main`
+  padding: 20px;
+`;
+
 const Language = styled.li`
   list-style: none;
-  border: 0.5px solid black;
-  border-radius: 0.5rem;
-  width: 9rem;
-  padding: 0.5rem 1.5rem;
+  border: 0.5px solid grey;
+  color: grey;
+  border-radius: 40px;
+  padding: 0.5rem 0.8rem;
+`;
+
+const LanguageContainer = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+`;
+
+const ButtonFrame = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
 `;
 
 const PracticeButton = styled.a`
@@ -63,8 +79,9 @@ const PracticeButton = styled.a`
   border-radius: 40px;
   background-color: #26cd7d;
   color: white;
-  padding: 15px 25px;
+  padding: 1rem 2rem;
   margin: 10px;
+  width: 10rem;
   text-decoration: none;
   font-weight: 400;
 `;
@@ -72,18 +89,14 @@ const PracticeButton = styled.a`
 const WelcomeText = styled.h1`
   display: flex;
   justify-content: center;
-  background-color: tomato;
 `;
 
-const LanguageSection = styled.div`
+const StyledHeadline = styled.p`
   display: flex;
-  justify-content: center;
-  align-content: center;
-  background-color: aliceblue;
+  justify-content: flex-start;
+  margin-top: 3rem;
 `;
 
-const StyledHeadline = styled.h2`
-  display: flex;
-  justify-content: center;
-  align-content: center;
+const LanguageButton = styled.a`
+  color: grey;
 `;

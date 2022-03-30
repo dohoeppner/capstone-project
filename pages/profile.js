@@ -7,7 +7,7 @@ export default function Profile() {
       <main>
         <h1>Hello, here will appear my name!</h1>
       </main>
-      <Navbar active="profile" />
+      <Navbar />
     </Layout>
   );
 }

@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
-export default function Navbar({ active }) {
-  const styleActiveClass = "navBar-active";
+export default function Navbar() {
+  const router = useRouter();
   return (
     <footer>
       <StyledNavbar>
         <Link href="/home" passHref>
-          <NavbarItem>
+          <NavbarItem className={router.asPath === "/home" ? "active" : ""}>
             <Image
               width="20"
               height="20"
@@ -19,7 +20,7 @@ export default function Navbar({ active }) {
           </NavbarItem>
         </Link>
         <Link href="/create" passHref>
-          <NavbarItem>
+          <NavbarItem className={router.asPath === "/create" ? "active" : ""}>
             <Image
               width="20"
               height="20"
@@ -30,7 +31,7 @@ export default function Navbar({ active }) {
           </NavbarItem>
         </Link>
         <Link href="/learn" passHref>
-          <NavbarItem>
+          <NavbarItem className={router.asPath === "/learn" ? "active" : ""}>
             <Image
               width="20"
               height="20"
@@ -41,7 +42,7 @@ export default function Navbar({ active }) {
           </NavbarItem>
         </Link>
         <Link href="/search" passHref>
-          <NavbarItem>
+          <NavbarItem className={router.asPath === "/search" ? "active" : ""}>
             <Image
               width="20"
               height="20"
@@ -52,7 +53,7 @@ export default function Navbar({ active }) {
           </NavbarItem>
         </Link>
         <Link href="/profile" passHref>
-          <NavbarItem>
+          <NavbarItem className={router.asPath === "/profile" ? "active" : ""}>
             <Image
               width="20"
               height="20"
@@ -76,35 +77,37 @@ const StyledNavbar = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px 24px 32px 24px;
+  padding: 8px 16px 24px 16px;
   gap: 20px;
   background-color: #fcfcff;
 `;
 
 const NavbarItem = styled.a`
-  text-decoration: none;
+  position: relative;
   text-align: center;
   margin: 10px;
+  text-decoration: none;
+  opacity: 0.5;
+  font-size: 10px;
+  color: black;
 
   &:hover {
-    text-decoration: none;
+    top: -4px;
+    opacity: 1;
   }
-`;
 
-const StyledIcon = styled(Image)`
-  border: 2px red solid important!;
+  &.active {
+    opacity: 1;
+  }
 `;
 
 const ItemLabel = styled.span`
   display: block;
   text-align: center;
-  color: grey;
   font-size: 10px;
-  transition-duration: 0.4s;
 
   &:hover {
     text-decoration: none;
-    color: tomato;
     font-weight: 400;
   }
 `;
