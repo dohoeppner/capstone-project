@@ -3,70 +3,70 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
+const NavbarItemActiveClass = "NavbarItem-active";
+
 export default function Navbar() {
   const router = useRouter();
+
   return (
     <footer>
       <StyledNavbar>
-        <Link href="/home" passHref>
-          <NavbarItem className={router.asPath === "/home" ? "active" : ""}>
-            <Image
-              width="20"
-              height="20"
-              src="/icons/home.svg"
-              alt="HomeIcon"
-            ></Image>
-            <ItemLabel>Home</ItemLabel>
-          </NavbarItem>
-        </Link>
-        <Link href="/create" passHref>
-          <NavbarItem className={router.asPath === "/create" ? "active" : ""}>
-            <Image
-              width="20"
-              height="20"
-              src="/icons/create.svg"
-              alt="CreateIcon"
-            ></Image>
-            <ItemLabel>Create</ItemLabel>
-          </NavbarItem>
-        </Link>
-        <Link href="/learn" passHref>
-          <NavbarItem className={router.asPath === "/learn" ? "active" : ""}>
-            <Image
-              width="20"
-              height="20"
-              src="/icons/learn.svg"
-              alt="LearnIcon"
-            ></Image>
-            <ItemLabel>Learn</ItemLabel>
-          </NavbarItem>
-        </Link>
-        <Link href="/search" passHref>
-          <NavbarItem className={router.asPath === "/search" ? "active" : ""}>
-            <Image
-              width="20"
-              height="20"
-              src="/icons/search.svg"
-              alt="SearchIcon"
-            ></Image>
-            <ItemLabel>Search</ItemLabel>
-          </NavbarItem>
-        </Link>
-        <Link href="/profile" passHref>
-          <NavbarItem className={router.asPath === "/profile" ? "active" : ""}>
-            <Image
-              width="20"
-              height="20"
-              src="/icons/profile.svg"
-              alt="ProfileIcon"
-            ></Image>
-            <ItemLabel>Profile</ItemLabel>
-          </NavbarItem>
-        </Link>
+        {navigationItems.map((item) => {
+          return (
+            <Link key={item.href} href={item.href} passHref>
+              <NavbarItem
+                className={
+                  router.asPath === item.href ? NavbarItemActiveClass : ""
+                }
+              >
+                <Image
+                  width="20"
+                  height="20"
+                  src={item.src}
+                  alt={item.alt}
+                ></Image>
+                <ItemLabel>{item.label}</ItemLabel>
+              </NavbarItem>
+            </Link>
+          );
+        })}
       </StyledNavbar>
     </footer>
   );
 }
+
+const navigationItems = [
+  {
+    href: "/home",
+    src: "/icons/home.svg",
+    alt: "HomeIcon",
+    label: "Home",
+  },
+  {
+    href: "/create",
+    src: "/icons/create.svg",
+    alt: "CreateIcon",
+    label: "Create",
+  },
+  {
+    href: "/learn",
+    src: "/icons/learn.svg",
+    alt: "LearnIcon",
+    label: "Learn",
+  },
+  {
+    href: "/search",
+    src: "/icons/search.svg",
+    alt: "SearchIcon",
+    label: "Search",
+  },
+  {
+    href: "/profile",
+    src: "/icons/profile.svg",
+    alt: "ProfileIcon",
+    label: "Profile",
+  },
+];
 
 const StyledNavbar = styled.nav`
   position: fixed;
@@ -96,7 +96,7 @@ const NavbarItem = styled.a`
     opacity: 1;
   }
 
-  &.active {
+  &.${NavbarItemActiveClass} {
     opacity: 1;
   }
 `;

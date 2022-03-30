@@ -6,5 +6,4 @@ export default function Card() {
 
 const StyledCard = styled.div`
   border: 1px solid black;
-  background-color: "fcfcff";
 `;

@@ -5,7 +5,7 @@ export default function Create() {
   return (
     <Layout>
       <main>
-        <h1>Here you can create new cards!</h1>;
+        <h1>Here you can create new cards!</h1>
       </main>
       <Navbar />
     </Layout>
