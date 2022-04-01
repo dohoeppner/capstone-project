@@ -5,8 +5,8 @@ export default function ToggleButton({ handleClick }) {
   return (
     <StyledToggleButton onClick={handleClick}>
       <Image
-        width="20"
-        height="20"
+        width="25"
+        height="25"
         src="/icons/arrows.svg"
         alt="ArrowIcon"
       ></Image>
