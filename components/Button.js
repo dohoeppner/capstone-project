@@ -1,7 +1,25 @@
-export default function Button() {
-  function handleClick() {
-    alert("You clicked me!");
-  }
+import styled from "styled-components";
 
-  return <button onClick={handleClick}>Practice now</button>;
+export default function ContinueButton() {
+  return (
+    <ButtonWrapper>
+      <StyledContinueButton>Continue</StyledContinueButton>
+    </ButtonWrapper>
+  );
 }
+
+const StyledContinueButton = styled.button`
+  background-color: lavender;
+  color: black;
+  font-size: 1rem;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  font-family: Roboto;
+`;
