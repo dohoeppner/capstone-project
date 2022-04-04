@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-export default function ContinueButton() {
+export default function ContinueButton({ handleClick }) {
   return (
     <ButtonWrapper>
-      <StyledContinueButton>Continue</StyledContinueButton>
+      <StyledContinueButton onClick={handleClick}>
+        Continue
+      </StyledContinueButton>
     </ButtonWrapper>
   );
 }
@@ -15,11 +17,12 @@ const StyledContinueButton = styled.button`
   border: none;
   padding: 1rem 1.5rem;
   border-radius: 10px;
+  font-family: Roboto !important;
+  font-weight: 300;
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 3rem;
-  font-family: Roboto;
 `;
