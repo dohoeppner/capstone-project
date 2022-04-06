@@ -20,5 +20,5 @@ const StyledCheckButton = styled.button`
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
-  background-color: #db2828;
+  background-color: #e25252;
 `;

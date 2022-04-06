@@ -3,6 +3,7 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
+import LanguageList from "../components/LanguageList";
 
 export default function Home() {
   return (
@@ -11,31 +12,10 @@ export default function Home() {
         <title>Vocabulary App</title>
       </Head>
       <StyledMain>
-        <WelcomeText>Welcome, Dora!</WelcomeText>
+        <WelcomeText>Welcome Dora!</WelcomeText>
         <StyledHeadline>My languages</StyledHeadline>
 
-        <LanguageContainer>
-          <Language>
-            <Link href="#" passHref>
-              <LanguageButton>Language 1</LanguageButton>
-            </Link>
-          </Language>
-          <Language>
-            <Link href="#" passHref>
-              <LanguageButton>Language 2</LanguageButton>
-            </Link>
-          </Language>
-          <Language>
-            <Link href="#" passHref>
-              <LanguageButton>Language 3</LanguageButton>
-            </Link>
-          </Language>
-          <Language>
-            <Link href="#" passHref>
-              <LanguageButton>+</LanguageButton>
-            </Link>
-          </Language>
-        </LanguageContainer>
+        <LanguageList />
 
         <ButtonFrame>
           <Link href="/learn" passHref>
@@ -52,25 +32,10 @@ const StyledMain = styled.main`
   padding: 20px;
 `;
 
-const Language = styled.li`
-  list-style: none;
-  border: 0.5px solid grey;
-  color: grey;
-  border-radius: 40px;
-  padding: 0.5rem 0.8rem;
-`;
-
-const LanguageContainer = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 10px;
-`;
-
 const ButtonFrame = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 `;
 
 const PracticeButton = styled.a`
@@ -79,9 +44,8 @@ const PracticeButton = styled.a`
   border-radius: 40px;
   background-color: #26cd7d;
   color: white;
-  padding: 1rem 2rem;
-  margin: 10px;
-  width: 10rem;
+  padding: 1rem 1.5rem;
+  min-width: 4rem;
   text-decoration: none;
   font-weight: 400;
 `;
@@ -89,14 +53,12 @@ const PracticeButton = styled.a`
 const WelcomeText = styled.h1`
   display: flex;
   justify-content: center;
+  text-align: center;
 `;
 
 const StyledHeadline = styled.p`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   margin-top: 3rem;
-`;
-
-const LanguageButton = styled.a`
-  color: grey;
+  font-size: larger;
 `;

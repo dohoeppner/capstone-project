@@ -71,13 +71,13 @@ const navigationItems = [
 const StyledNavbar = styled.nav`
   position: fixed;
   width: 100%;
-  border-top: 1px solid grey;
+  box-shadow: 0px 0px 21px 3px rgba(223, 223, 242, 0.67);
   bottom: 0;
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 16px 24px 16px;
+  padding: 6px 12px 12px 12px;
   gap: 20px;
   background-color: #fcfcff;
 `;
