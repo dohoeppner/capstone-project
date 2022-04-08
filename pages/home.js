@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import LanguageList from "../components/LanguageList";
+import { SubmitLink } from "../components/SubmitButton";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
 
         <ButtonFrame>
           <Link href="/learn" passHref>
-            <PracticeButton>Practice now</PracticeButton>
+            <SubmitLink>Practice now</SubmitLink>
           </Link>
         </ButtonFrame>
       </StyledMain>
@@ -36,18 +37,6 @@ const ButtonFrame = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 2.5rem;
-`;
-
-const PracticeButton = styled.a`
-  display: flex;
-  justify-content: center;
-  border-radius: 40px;
-  background-color: #26cd7d;
-  color: white;
-  padding: 1rem 1.5rem;
-  min-width: 4rem;
-  text-decoration: none;
-  font-weight: 400;
 `;
 
 const WelcomeText = styled.h1`

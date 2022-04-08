@@ -16,9 +16,9 @@ const StyledContinueButton = styled.button`
   font-size: 1rem;
   border: none;
   padding: 1rem 1.5rem;
-  border-radius: 10px;
+  border-radius: 40px;
   font-family: Roboto !important;
-  font-weight: 300;
+  font-weight: 400;
 `;
 
 const ButtonWrapper = styled.div`
