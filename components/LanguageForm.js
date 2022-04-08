@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import Image from "next/image";
+import SubmitButton from "./SubmitButton";
+import InputField from "./InputField";
 import { useState, useEffect } from "react";
 
 const defaultState = { label: "", code: "" };
@@ -40,18 +41,19 @@ export default function LanguageForm({ onSubmit, languages }) {
           <li>
             <StyledLabel>Add a new learning language:</StyledLabel>
             <br />
-            <StyledInputField
+            <InputField
               onChange={handleChange}
               value={state.label}
               type="text"
               name="label"
+              placeholder="i.e. English"
               required
             />
           </li>
           <li>
             <StyledLabel>Add the language international Code:</StyledLabel>
             <br />
-            <StyledInputField
+            <InputField
               onChange={handleChange}
               value={state.code}
               type="text"
@@ -62,7 +64,7 @@ export default function LanguageForm({ onSubmit, languages }) {
             />
           </li>
           <ButtonWrapper>
-            <StyledAddButton disabled={error}>Add language</StyledAddButton>
+            <SubmitButton disabled={error}>Add language</SubmitButton>
           </ButtonWrapper>
         </StyledList>
       </StyledForm>
@@ -82,31 +84,6 @@ const StyledList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-`;
-
-const StyledInputField = styled.input`
-  border: 1px solid grey;
-  border-radius: 5px;
-  min-width: 250px;
-  padding: 0.3rem 0.5rem;
-  margin-top: 0.3rem;
-  margin-bottom: 0.7rem;
-`;
-
-const StyledAddButton = styled.button`
-  display: flex;
-  justify-content: center;
-  border: none;
-  border-radius: 40px;
-  background-color: #26cd7d;
-  color: white;
-  padding: 1rem 1.5rem;
-  min-width: 4rem;
-  font-weight: 400;
-
-  &:disabled {
-    opacity: 0.5;
-  }
 `;
 
 const StyledHeadline = styled.p`
