@@ -10,6 +10,7 @@ const styles = css`
   padding: 1rem 1.5rem;
   min-width: 4rem;
   font-weight: 400;
+  cursor: pointer;
 
   &:disabled {
     opacity: 0.5;

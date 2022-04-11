@@ -3,17 +3,51 @@ import Navbar from "../components/Navbar";
 import SubmitButton from "../components/SubmitButton";
 import InputField from "../components/InputField";
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import vocabulary from "../mock/vocabulary";
 
 const defaultState = { word: "", translation: "" };
 
-export default function Create({ onSubmit }) {
+export default function Create() {
   const [state, setState] = useState(defaultState);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    setError(false);
+  }, [state]);
 
   function handleSubmit(event) {
     event.preventDefault();
-    setState(defaultState);
-    //onSubmit(state);
+
+    if (doesWordExist(state.word)) {
+      setError(true);
+    } else {
+      setState(defaultState);
+      vocabulary.push({
+        translation: state.translation,
+        content: state.word,
+        id: vocabulary[vocabulary.length - 1].id + 1,
+      });
+    }
+  }
+
+  function doesWordExist(content) {
+    const word = vocabulary.find((element) => {
+      return content === element.content ? true : false;
+    });
+
+    return word !== undefined ? true : false;
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+
+    setState((currentStateValue) => {
+      return {
+        ...currentStateValue,
+        [name]: value,
+      };
+    });
   }
 
   return (
@@ -21,12 +55,16 @@ export default function Create({ onSubmit }) {
       <StyledMain>
         <StyledHeadline>Create a new card</StyledHeadline>
 
+        {error && <p>Word is already in your collection</p>}
+
         <StyledForm onSubmit={handleSubmit} method="post">
           <StyledList>
             <li>
               <StyledLabel>Foreign language:</StyledLabel>
               <br />
               <InputField
+                onChange={handleChange}
+                value={state.word}
                 type="text"
                 name="word"
                 placeholder="Add new word/expression"
@@ -37,6 +75,8 @@ export default function Create({ onSubmit }) {
               <StyledLabel>Translation:</StyledLabel>
               <br />
               <StyledTextarea
+                onChange={handleChange}
+                value={state.translation}
                 name="translation"
                 rows="5"
                 cols="35"

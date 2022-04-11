@@ -10,7 +10,7 @@ const vocabulary = [
     id: 2,
   },
   {
-    content: "la farine",
+    content: "farine (f)",
     translation: "Mehl",
     id: 3,
   },
@@ -20,12 +20,12 @@ const vocabulary = [
     id: 4,
   },
   {
-    content: "la plate-bande",
+    content: "plate-bande (f)",
     translation: "Beet, Rabatte",
     id: 5,
   },
   {
-    content: "la jonquille",
+    content: "jonquille (f)",
     translation: "Osterglocke, Narzisse",
     id: 6,
   },
@@ -90,3 +90,5 @@ const vocabulary = [
     id: 18,
   },
 ];
+
+export default vocabulary;
