@@ -1,15 +1,15 @@
+import { useState } from "react";
+import styled from "styled-components";
+import { Dialog, AppBar } from "@mui/material";
+import Image from "next/image";
+import Fuse from "fuse.js";
+
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import SearchList from "../components/SearchList";
-import styled from "styled-components";
 import vocabulary from "../mock/vocabulary";
-import { SearchBar } from "../components/SearchBar";
-import { Dialog, AppBar } from "@mui/material";
-import Image from "next/image";
 import WordForm from "../components/WordForm";
-
-import Fuse from "fuse.js";
-import { useState } from "react";
+import { SearchBar } from "../components/SearchBar";
 
 const fuse = new Fuse(vocabulary, {
   keys: ["content", "translation"],
