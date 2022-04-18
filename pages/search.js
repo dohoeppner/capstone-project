@@ -61,13 +61,10 @@ export default function Search() {
 
   const handleDeleteClick = () => {
     if (confirm("Do you really want to delete this word?")) {
-      vocabulary = vocabulary.filter((word) => {
-        if (word.id === item.id) {
-          return false;
-        } else {
-          return true;
-        }
-      });
+      vocabulary = vocabulary.filter((word) =>
+        word.id === item.id ? false : true
+      );
+
       fuse.setCollection(vocabulary);
       setResult(search(term));
 
