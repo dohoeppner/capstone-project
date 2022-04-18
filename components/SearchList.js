@@ -9,7 +9,7 @@ export default function SearchList({ result, handleClick }) {
             return (
               <StyledListItem key={item.id} onClick={() => handleClick(item)}>
                 {item.content} - {item.translation}
-                {item.archived === true ? " (archived)" : ""}
+                {item.archived && " (archived)"}
               </StyledListItem>
             );
           })}
