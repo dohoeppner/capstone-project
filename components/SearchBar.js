@@ -34,7 +34,6 @@ export function SearchBar({ onSearch }) {
 }
 
 const StyledForm = styled.form`
-  background-color: aquamarine;
   width: 100%;
   display: flex;
   justify-content: center;
