@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-export default function Textarea(props) {
-  return <StyledTextarea {...props}></StyledTextarea>;
-}
-
-const StyledTextarea = styled.textarea`
+export default styled.textarea`
   border-radius: 5px;
   border-color: #ddddf0;
   font-family: Roboto !important;

@@ -9,7 +9,10 @@ import Navbar from "../components/Navbar";
 import SearchList from "../components/SearchList";
 import vocabulary from "../mock/vocabulary";
 import WordForm from "../components/WordForm";
+<<<<<<< HEAD
 import SubmitButton from "../components/SubmitButton";
+=======
+>>>>>>> main
 import { SearchBar } from "../components/SearchBar";
 
 const fuse = new Fuse(vocabulary, {
@@ -56,7 +59,10 @@ export default function Search() {
   };
 
   const handleClick = () => {
+<<<<<<< HEAD
     console.log(handleClick);
+=======
+>>>>>>> main
     item.archived = false;
     updateItem(item);
   };
@@ -154,6 +160,7 @@ const StyledCloseButton = styled.button`
   display: flex;
   align-items: center;
 `;
+<<<<<<< HEAD
 
 const ButtonWrapper = styled.div`
   margin-top: 1.5rem;
@@ -176,3 +183,5 @@ const DeleteButtonWrapper = styled.div`
   justify-content: center;
   margin-top: 0.8rem;
 `;
+=======
+>>>>>>> main
