@@ -5,10 +5,10 @@ export default function InputField(props) {
 }
 
 const StyledInputField = styled.input`
-  border: 1px solid grey;
+  border: 1px solid #ddddf0;
   border-radius: 5px;
-  min-width: 245px;
-  padding: 0.3rem 0.5rem;
-  margin-top: 0.3rem;
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  margin-top: 1rem;
   margin-bottom: 0.7rem;
 `;
