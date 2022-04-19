@@ -20,9 +20,15 @@ export default function LanguageList() {
   }, [languages]);
 
   const handleDelete = (item) => {
-    setLanguages((currentLanguages) => {
-      return currentLanguages.filter((language) => language.code !== item.code);
-    });
+    if (
+      confirm("Do you really want to delete this language and all the content?")
+    ) {
+      setLanguages((currentLanguages) => {
+        return currentLanguages.filter(
+          (language) => language.code !== item.code
+        );
+      });
+    }
   };
 
   return (

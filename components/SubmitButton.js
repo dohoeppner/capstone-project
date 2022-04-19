@@ -8,7 +8,6 @@ const styles = css`
   background-color: #26cd7d;
   color: white;
   padding: 1rem 1.5rem;
-  min-width: 4rem;
   font-weight: 400;
   cursor: pointer;
 
@@ -17,8 +16,8 @@ const styles = css`
   }
 `;
 
-export default function SubmitButton({ children }) {
-  return <StyledSubmitButton>{children}</StyledSubmitButton>;
+export default function SubmitButton({ children, ...props }) {
+  return <StyledSubmitButton {...props}>{children}</StyledSubmitButton>;
 }
 
 export const SubmitLink = styled.a`
