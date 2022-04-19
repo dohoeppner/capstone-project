@@ -9,6 +9,7 @@ import Navbar from "../components/Navbar";
 import SearchList from "../components/SearchList";
 import vocabulary from "../mock/vocabulary";
 import WordForm from "../components/WordForm";
+import SubmitButton from "../components/SubmitButton";
 import { SearchBar } from "../components/SearchBar";
 
 const fuse = new Fuse(vocabulary, {
@@ -80,38 +81,46 @@ export default function Search() {
           <SearchBar onSearch={handleSearch} />
         </StyledSearchSection>
         <SearchList result={result} handleClick={(item) => setItem(item)} />
+
+        <Dialog fullScreen open={item ? true : false}>
+          <AppBar
+            sx={{
+              boxShadow: "none",
+              display: "flex",
+              flexDirection: "row-reverse",
+              alignItems: "center",
+              paddingTop: "0.5rem",
+              paddingRight: "0.5rem",
+            }}
+            position="relative"
+            color="transparent"
+          >
+            <StyledCloseButton onClick={() => setItem(null)}>
+              <Image
+                width="15"
+                height="15"
+                src="/icons/x_white.svg"
+                alt="FailureIcon"
+              ></Image>
+            </StyledCloseButton>
+          </AppBar>
+          <WordForm word={item} onSubmitForm={updateItem} buttonLabel="Edit" />
+          {item?.archived && (
+            <ButtonWrapper>
+              <SubmitButton onClick={handleClick}>
+                Back into collection
+              </SubmitButton>
+            </ButtonWrapper>
+          )}
+          <DeleteButtonWrapper>
+            <StyledDeleteButton onClick={handleDeleteClick}>
+              Delete
+            </StyledDeleteButton>
+          </DeleteButtonWrapper>
+        </Dialog>
+
+        <Navbar />
       </StyledMain>
-
-      <Dialog fullScreen open={item ? true : false}>
-        <AppBar
-          sx={{
-            boxShadow: "none",
-            display: "flex",
-            flexDirection: "row-reverse",
-            alignItems: "center",
-            paddingTop: "0.5rem",
-            paddingRight: "0.5rem",
-          }}
-          position="relative"
-          color="transparent"
-        >
-          <StyledCloseButton onClick={() => setItem(null)}>
-            <Image
-              width="15"
-              height="15"
-              src="/icons/x_white.svg"
-              alt="FailureIcon"
-            ></Image>
-          </StyledCloseButton>
-        </AppBar>
-        <WordForm word={item} onSubmitForm={updateItem} buttonLabel="Edit" />
-        {item?.archived && (
-          <button onClick={handleClick}>Back into collection</button>
-        )}
-        <button onClick={handleDeleteClick}>Delete</button>
-      </Dialog>
-
-      <Navbar />
     </Layout>
   );
 }
@@ -143,4 +152,26 @@ const StyledCloseButton = styled.button`
   background-color: black;
   display: flex;
   align-items: center;
+`;
+
+const ButtonWrapper = styled.div`
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledDeleteButton = styled.button`
+  border: none;
+  cursor: pointer;
+  min-width: 4rem;
+  padding: 1rem 1.5rem;
+  border-radius: 40px;
+  background-color: #e25252;
+  color: white;
+`;
+
+const DeleteButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 0.8rem;
 `;

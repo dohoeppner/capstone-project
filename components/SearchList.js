@@ -2,20 +2,18 @@ import styled from "styled-components";
 
 export default function SearchList({ result, handleClick }) {
   return (
-    <>
-      <StyledSearchListWrapper>
-        <StyledSearchList>
-          {result.map((item) => {
-            return (
-              <StyledListItem key={item.id} onClick={() => handleClick(item)}>
-                {item.content} - {item.translation}
-                {item.archived && " (archived)"}
-              </StyledListItem>
-            );
-          })}
-        </StyledSearchList>
-      </StyledSearchListWrapper>
-    </>
+    <StyledSearchListWrapper>
+      <StyledSearchList>
+        {result.map((item) => {
+          return (
+            <StyledListItem key={item.id} onClick={() => handleClick(item)}>
+              {item.content} - {item.translation}
+              {item.archived && " (archived)"}
+            </StyledListItem>
+          );
+        })}
+      </StyledSearchList>
+    </StyledSearchListWrapper>
   );
 }
 
