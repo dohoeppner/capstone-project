@@ -4,9 +4,11 @@ import styled from "styled-components";
 import WordForm from "../components/WordForm";
 import { WordsContext } from "../context/wordsContext";
 import { useContext } from "react";
+import { UserContext } from "../context/userContext";
 
 export default function Create() {
   const { vocabulary, setVocabulary } = useContext(WordsContext);
+  const { user } = useContext(UserContext);
 
   function doesWordExist(content) {
     const word = vocabulary.find((element) => {
@@ -24,6 +26,7 @@ export default function Create() {
         content: word.content,
         archived: false,
         id: vocabulary[vocabulary.length - 1].id + 1,
+        code: user.selectedLanguage,
       },
     ]);
   };

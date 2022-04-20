@@ -47,6 +47,7 @@ export default function LanguageForm({ onSubmit, languages }) {
               type="text"
               name="label"
               placeholder="i.e. English"
+              autoComplete="off"
               required
             />
           </li>
@@ -60,6 +61,7 @@ export default function LanguageForm({ onSubmit, languages }) {
               name="code"
               placeholder="i.e. en, fr, it, no etc."
               required
+              autoComplete="off"
               minLength={2}
             />
           </li>

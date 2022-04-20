@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import LanguageForm from "./LanguageForm";
 import Image from "next/image";
 import { Dialog, AppBar } from "@mui/material";
+import { LanguagesContext } from "../context/languagesContext";
+import { UserContext } from "../context/userContext";
 
 export default function LanguageList() {
-  const [languages, setLanguages] = useState(myLanguages);
+  const { languages, setLanguages } = useContext(LanguagesContext);
+  const { user, setUser } = useContext(UserContext);
   const [displayForm, setDisplayForm] = useState(false);
 
   function handleSubmit(newLanguage) {
@@ -31,29 +33,40 @@ export default function LanguageList() {
     }
   };
 
+  const onSelectLanguage = (code) => {
+    setUser((currentUser) => {
+      return { ...currentUser, selectedLanguage: code };
+    });
+  };
+
   return (
     <div>
       <LanguageContainer>
         {languages.map((item) => {
           return (
             <Language key={item.code}>
-              <Link href="#" passHref>
-                <LanguageButton>
-                  {item.label}
-                  <DeleteButton
-                    onClick={() => {
-                      handleDelete(item);
-                    }}
-                  >
-                    <Image
-                      width="30"
-                      height="30"
-                      src="/icons/minus_black.svg"
-                      alt="MinusIcon"
-                    ></Image>
-                  </DeleteButton>
-                </LanguageButton>
-              </Link>
+              <LanguageButton
+                className={
+                  item.code === user.selectedLanguage ? "selected" : ""
+                }
+                onClick={() => {
+                  onSelectLanguage(item.code);
+                }}
+              >
+                {item.label}
+                <DeleteButton
+                  onClick={() => {
+                    handleDelete(item);
+                  }}
+                >
+                  <Image
+                    width="30"
+                    height="30"
+                    src="/icons/minus_black.svg"
+                    alt="MinusIcon"
+                  ></Image>
+                </DeleteButton>
+              </LanguageButton>
             </Language>
           );
         })}
@@ -91,21 +104,6 @@ export default function LanguageList() {
   );
 }
 
-const myLanguages = [
-  {
-    label: "English",
-    code: "en",
-  },
-  {
-    label: "French",
-    code: "fr",
-  },
-  {
-    label: "Italian",
-    code: "it",
-  },
-];
-
 const Language = styled.li`
   list-style: none;
   display: flex;
@@ -122,12 +120,17 @@ const LanguageContainer = styled.ul`
 const LanguageButton = styled.a`
   color: grey;
   background-color: #e6e6fa;
+  border: 3px solid #fff;
   border-radius: 40px;
   padding: 0.5rem 0.8rem;
   display: flex;
   justify-content: center;
   min-width: 7rem;
   position: relative;
+
+  &.selected {
+    border-color: #c1a0fe;
+  }
 `;
 
 const PlusButton = styled.a`
