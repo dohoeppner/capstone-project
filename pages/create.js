@@ -2,9 +2,14 @@ import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import WordForm from "../components/WordForm";
-import vocabulary from "../mock/vocabulary";
+import { WordsContext } from "../context/wordsContext";
+import { useContext } from "react";
+import { UserContext } from "../context/userContext";
 
 export default function Create() {
+  const { vocabulary, setVocabulary } = useContext(WordsContext);
+  const { user } = useContext(UserContext);
+
   function doesWordExist(content) {
     const word = vocabulary.find((element) => {
       return content === element.content ? true : false;
@@ -14,12 +19,16 @@ export default function Create() {
   }
 
   const handleFormSubmit = (word) => {
-    vocabulary.push({
-      translation: word.translation,
-      content: word.content,
-      archived: false,
-      id: vocabulary[vocabulary.length - 1].id + 1,
-    });
+    setVocabulary([
+      ...vocabulary,
+      {
+        translation: word.translation,
+        content: word.content,
+        archived: false,
+        id: vocabulary[vocabulary.length - 1].id + 1,
+        code: user.selectedLanguage,
+      },
+    ]);
   };
 
   return (

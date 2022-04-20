@@ -71,6 +71,7 @@ export default function WordForm({
             name="content"
             placeholder="Add new word/expression"
             readOnly={isEditing}
+            autoComplete="off"
             required
           />
 

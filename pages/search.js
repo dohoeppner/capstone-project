@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Dialog, AppBar } from "@mui/material";
 import Image from "next/image";
@@ -7,12 +7,12 @@ import Fuse from "fuse.js";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import SearchList from "../components/SearchList";
-import vocabulary from "../mock/vocabulary";
 import WordForm from "../components/WordForm";
 import SubmitButton from "../components/SubmitButton";
 import { SearchBar } from "../components/SearchBar";
+import { WordsContext } from "../context/wordsContext";
 
-const fuse = new Fuse(vocabulary, {
+const fuse = new Fuse([], {
   keys: ["content", "translation"],
   includeScore: true,
   includeMatches: true,
@@ -28,9 +28,15 @@ function search(term) {
 }
 
 export default function Search() {
+  const { vocabulary, setVocabulary } = useContext(WordsContext);
   const [result, setResult] = useState([]);
   const [item, setItem] = useState(null);
   const [term, setTerm] = useState("");
+
+  useEffect(() => {
+    fuse.setCollection(vocabulary);
+    setResult(search(term));
+  }, [vocabulary, term]);
 
   const handleSearch = (searchTxt) => {
     setTerm(searchTxt);
@@ -39,19 +45,16 @@ export default function Search() {
   };
 
   const updateItem = (item) => {
-    vocabulary = vocabulary.map((word) => {
-      if (word.id === item.id) {
-        return { ...item };
-      }
+    setVocabulary(
+      vocabulary.map((word) => {
+        if (word.id === item.id) {
+          return { ...item };
+        }
 
-      return word;
-    });
+        return word;
+      })
+    );
 
-    // Update collection and search result
-    fuse.setCollection(vocabulary);
-    setResult(search(term));
-
-    // Close the modal
     setItem(null);
   };
 
@@ -62,12 +65,9 @@ export default function Search() {
 
   const handleDeleteClick = () => {
     if (confirm("Do you really want to delete this word?")) {
-      vocabulary = vocabulary.filter((word) =>
-        word.id === item.id ? false : true
+      setVocabulary(
+        vocabulary.filter((word) => (word.id === item.id ? false : true))
       );
-
-      fuse.setCollection(vocabulary);
-      setResult(search(term));
 
       setItem(null);
     }
