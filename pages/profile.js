@@ -4,22 +4,29 @@ import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import Image from "next/image";
 import LanguageList from "../components/LanguageList";
+import { UserContext } from "../context/userContext";
+import { useContext } from "react";
 
 export default function Profile() {
+  const { user } = useContext(UserContext);
+  const userName = `${user.firstName} ${user.lastName}`;
+
   return (
     <Layout>
       <StyledMain>
         <StyledProfileWrapper>
           <StyledImageFrame>
             <Image
-              width="50"
-              height="50"
-              src="/icons/cat_profile_pink.svg"
-              alt="Profile Picture"
+              width="100%"
+              height="100%"
+              src={`/api/imageproxy?url=${encodeURIComponent(user.image)}`}
+              alt={`Profile Picture of ${userName}`}
+              objectFit="cover"
+              quality={80}
             ></Image>
           </StyledImageFrame>
         </StyledProfileWrapper>
-        <StyledProfileName>Little Miss Late</StyledProfileName>
+        <StyledProfileName>{userName}</StyledProfileName>
 
         <StyledHeadline>My languages</StyledHeadline>
         <LanguageList />
@@ -60,4 +67,5 @@ const StyledImageFrame = styled.div`
   height: 6rem;
   border: 3px solid grey;
   border-radius: 50%;
+  overflow: hidden;
 `;
