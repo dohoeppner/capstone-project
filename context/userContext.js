@@ -6,10 +6,6 @@ export const UserContext = createContext();
 export default function UserContextProvider({ children }) {
   const [user, setUser] = useState(userMock);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   return (
     <UserContext.Provider value={{ user, setUser }}>
       {children}

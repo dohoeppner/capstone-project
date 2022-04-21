@@ -1,19 +1,24 @@
+import { useContext } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import Layout from "../components/Layout";
 import styled from "styled-components";
+
+import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import LanguageList from "../components/LanguageList";
 import { SubmitLink } from "../components/SubmitButton";
+import { UserContext } from "../context/userContext";
 
 export default function Home() {
+  const { user } = useContext(UserContext);
+
   return (
     <Layout>
       <Head>
         <title>Vocabulary App</title>
       </Head>
       <StyledMain>
-        <WelcomeText>Welcome Dora!</WelcomeText>
+        <WelcomeText>Welcome {user.firstName}!</WelcomeText>
         <StyledHeadline>My languages</StyledHeadline>
 
         <LanguageList />
