@@ -9,6 +9,6 @@ const StyledInputField = styled.input`
   border-radius: 5px;
   width: 100%;
   padding: 0.5rem 0.5rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   margin-bottom: 0.7rem;
 `;

@@ -130,7 +130,7 @@ const StyledMain = styled.main`
 `;
 
 const StyledHeadline = styled.p`
-  color: #21bc72;
+  color: #26cd7d;
   font-weight: bold;
   font-size: larger;
   display: flex;

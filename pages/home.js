@@ -48,6 +48,7 @@ const WelcomeText = styled.h1`
   display: flex;
   justify-content: center;
   text-align: center;
+  color: #333333;
 `;
 
 const StyledHeadline = styled.p`
@@ -55,4 +56,5 @@ const StyledHeadline = styled.p`
   justify-content: center;
   margin-top: 3rem;
   font-size: larger;
+  color: #333333;
 `;

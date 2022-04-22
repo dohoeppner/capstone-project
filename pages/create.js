@@ -33,7 +33,7 @@ export default function Create() {
 
   return (
     <Layout>
-      <StyledMain>
+      <main>
         <StyledHeadline>Create a new card</StyledHeadline>
 
         <WordForm
@@ -41,18 +41,14 @@ export default function Create() {
           checkIfExists={doesWordExist}
           buttonLabel="Create"
         />
-      </StyledMain>
+      </main>
       <Navbar />
     </Layout>
   );
 }
 
-const StyledMain = styled.main`
-  padding: 20px;
-`;
-
 const StyledHeadline = styled.p`
-  color: #21bc72;
+  color: #26cd7d;
   font-weight: bold;
   font-size: larger;
   display: flex;

@@ -50,14 +50,14 @@ const StyledProfileName = styled.p`
   justify-content: center;
   font-weight: bold;
   font-size: large;
-  color: #5e5e66;
+  color: #333333;
 `;
 
 const StyledHeadline = styled.p`
   display: flex;
   justify-content: center;
   margin-top: 3rem;
-  color: #5e5e66;
+  color: #333333;
 `;
 
 const StyledImageFrame = styled.div`
@@ -65,7 +65,7 @@ const StyledImageFrame = styled.div`
   justify-content: center;
   width: 6rem;
   height: 6rem;
-  border: 3px solid grey;
+  border: 3px solid #c1a0fe;
   border-radius: 50%;
   overflow: hidden;
 `;
