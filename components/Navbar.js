@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useContext } from "react";
 import styled from "styled-components";
+import { WordsContext } from "../context/wordsContext";
 
 const NavbarItemActiveClass = "NavbarItem-active";
 
 export default function Navbar() {
+  const { pickableItems } = useContext(WordsContext);
   const router = useRouter();
 
   return (
@@ -25,7 +28,16 @@ export default function Navbar() {
                   src={item.src}
                   alt={item.alt}
                 ></Image>
-                <ItemLabel>{item.label}</ItemLabel>
+                <ItemLabel>
+                  <>
+                    {item.label}
+                    {item.label === "Learn" && pickableItems.length !== 0 && (
+                      <StyledNotification>
+                        {pickableItems.length}
+                      </StyledNotification>
+                    )}
+                  </>
+                </ItemLabel>
               </NavbarItem>
             </Link>
           );
@@ -110,4 +122,17 @@ const ItemLabel = styled.span`
     text-decoration: none;
     font-weight: 400;
   }
+`;
+
+const StyledNotification = styled.span`
+  display: inline-block;
+  padding: 1px 2px;
+  background-color: #ff686b;
+  color: white;
+  border-radius: 30px;
+  font-size: 8px;
+  min-width: 20px;
+  position: absolute;
+  margin-left: -23px;
+  margin-top: 17px;
 `;

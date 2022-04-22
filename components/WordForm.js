@@ -59,9 +59,11 @@ export default function WordForm({
   }
   return (
     <div>
-      {error && <p>Word is already in your collection</p>}
+      {error && (
+        <StyledReminder>Word is already in your collection!</StyledReminder>
+      )}
       <StyledForm onSubmit={handleSubmit} method="post">
-        <div>
+        <StyledFormContainer>
           <StyledLabel>Foreign language:</StyledLabel>
 
           <InputField
@@ -90,7 +92,7 @@ export default function WordForm({
           <ButtonWrapper>
             <SubmitButton>{buttonLabel}</SubmitButton>
           </ButtonWrapper>
-        </div>
+        </StyledFormContainer>
       </StyledForm>
     </div>
   );
@@ -113,4 +115,24 @@ const ButtonWrapper = styled.div`
   margin-top: 1.5rem;
   display: flex;
   justify-content: center;
+`;
+
+const StyledFormContainer = styled.div`
+  min-width: calc(280px - 2 * 1rem);
+  max-width: 600px;
+  width: 100%;
+  margin: 0 20px;
+`;
+
+const StyledReminder = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+  color: #ff7a7a;
+  font-weight: bold;
+  border: 2px solid #f6988e;
+  border-radius: 5px;
+  background-color: #ffd3cc;
+  padding: 7px;
+  max-width: fit-content;
 `;
