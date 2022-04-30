@@ -16,7 +16,6 @@ export default function Card({ showTranslation, translation, content }) {
 const StyledCard = styled.div`
   background-color: #fcfcff;
   box-shadow: 0px 0px 25px 6px rgba(193, 193, 209, 0.52);
-  //border: 1px solid #d4d4d4;
   color: black;
   font-weight: 300;
   padding: 10px;
