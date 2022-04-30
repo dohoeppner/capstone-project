@@ -7,6 +7,13 @@ const vocabulary = [
     id: 1,
   },
   {
+    content: "happiness",
+    translation: "Glück, Zufriedenheit, Fröhlichkeit",
+    archived: false,
+    code: "en",
+    id: 2,
+  },
+  {
     content: "farine (f)",
     translation: "Mehl",
     archived: false,
@@ -21,11 +28,25 @@ const vocabulary = [
     id: 4,
   },
   {
+    content: "kind",
+    translation: "nett, gütig, lieb",
+    archived: false,
+    code: "en",
+    id: 5,
+  },
+  {
     content: "jonquille (f)",
     translation: "Osterglocke, Narzisse",
     archived: false,
     code: "fr",
     id: 6,
+  },
+  {
+    content: "peace",
+    translation: "Frieden, Ruhe",
+    archived: false,
+    code: "en",
+    id: 7,
   },
   {
     content: "rester zen",
@@ -49,6 +70,41 @@ const vocabulary = [
     id: 10,
   },
   {
+    content: "successful",
+    translation: "erfolgreich",
+    archived: false,
+    code: "en",
+    id: 11,
+  },
+  {
+    content: "to read",
+    translation: "lesen",
+    archived: false,
+    code: "en",
+    id: 12,
+  },
+  {
+    content: "book",
+    translation: "Buch",
+    archived: false,
+    code: "en",
+    id: 13,
+  },
+  {
+    content: "calendrier (m)",
+    translation: "Kalender",
+    archived: false,
+    code: "fr",
+    id: 14,
+  },
+  {
+    content: "stylo (m)",
+    translation: "Stift",
+    archived: false,
+    code: "fr",
+    id: 15,
+  },
+  {
     content: "faire signe",
     translation: "winken",
     archived: false,
@@ -68,6 +124,20 @@ const vocabulary = [
     archived: true,
     code: "en",
     id: 18,
+  },
+  {
+    content: "jouer (qc.)",
+    translation: "spielen",
+    archived: false,
+    code: "fr",
+    id: 19,
+  },
+  {
+    content: "danser",
+    translation: "tanzen",
+    archived: false,
+    code: "fr",
+    id: 20,
   },
 ];
 
